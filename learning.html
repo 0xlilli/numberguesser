@@ -1,0 +1,50 @@
+
+<!doctype html>
+<html dir="ltr" lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>hallo</title>
+    <style>
+        * {
+            font-size:larger
+        }
+    .rot {
+      color: red;
+    }
+    body {
+      background-color: lightblue;
+    }
+    h1 {
+      color: blue;
+    }
+    p {
+      color: green;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>lilli's erste webseite! ;)</h1>
+    <strong>das ist ein fetter text</strong>
+    <p>das ist ein abschnitt</p>
+    <p>das ist ein abschnitt</p>
+    <ul>
+        <li>das ist ein listenpunkt</li>
+        <li>das ist ein listenpunkt</li>
+        <li>das ist ein listenpunkt</li>
+    </ul>
+    <p class="rot">das hier wird ein roter text</p>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <input type="submit" value="mach was tolles" onclick="alert('Hallo ' + document.getElementById('name').value + '!')">
+        <label for="name">Name:</label>
+        <input type="text" id="name2" name="name2">
+        <input type="submit" value="mach was tolles" onclick="alert('Hallo ' + document.getElementById('name2').value + '!')">
+        <label >name:</label>
+        <input type="text" id="name3" name="name3">
+        <input type="submit" value="lilli`s erster cooler Knopf" 
+            onclick="alert('Hallo ' + document.getElementById('name3').value + '!')">
+        </form>
+    </form>
+  </body>
+</html>
