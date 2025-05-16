@@ -6,12 +6,25 @@
     <title>hallo</title>
     <style>
     * {
-        font-size:larger
+        font-size: 30px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+    p, div , h1{
+        color: linen;
     }
     body {
         background: url('img/background.png') no-repeat center center fixed;
-        background-size: cover;
+        background-size: cover !important;
     }
+
+    body>div {
+        max-width:500px;
+        //margin:auto
+    }
+    input {
+        width: 220px;
+    }
+
     .rot {
       color: red;
     }
@@ -58,7 +71,7 @@
 
         function log(message) {
             var resultDiv = document.getElementById("result");
-            resultDiv.innerHTML += message + "<br>";
+            resultDiv.innerHTML = message + "<br/>" + resultDiv.innerHTML;
         }
 
 
@@ -82,7 +95,7 @@
                 log("<span>Versuch " + guessCount + " </span>: Die Zahl ist zu hoch!");
             } else {
                 try {
-                    document.getElementById("guessCount").innerText = guessCount;
+                    document.getElementById("guessCount").innerText = guessCount + ((guessCount == 1) ? " Versuch" : " Versuche");
                     document.getElementById('win').style.display = "block";
                     document.getElementById('guesser').style.display = "none";
                     document.getElementsByTagName('body')[0].style.background = "url('img/image.png') no-repeat center center fixed";
@@ -94,6 +107,7 @@
     </script>
   </head>
   <body>
+    <div>
         <h1>Lilli's erstes Spiel</h1>
         <p>Bei dem Spiel muss ein Spieler die Zahl des anderen erraten!</p>
 <!--
@@ -110,22 +124,23 @@
         <div id="start">
             <label>Gib eine Zahl ein, die zwischen 1 und 1000 liegt:</label>
             <br/>
-            <input type="password" class="masked" id="number" name="number">
+            <input type="number" class="masked" id="number" name="number">
             <br/>
             <input type="submit" id="submit_number" onclick="startGame();return false"/>
         </div>
         <div id="guesser">
             <label>Rate die Zahl die Spieler 1 eingegeben hat</label>
             <br/>
-            <input type="text" id="guess" name="guess">
+            <input type="number" id="guess" name="guess">
             <br/>
             <input type="submit" id="submit_guess" onclick="guessNumber();return false;"/>
         </div>
         <div id="result"></div>
         <div id="win">
-            Juhu, du hast die Zahl erraten!!! 🎉🤩 (<span id="guessCount"></span> Versuche)
+            Juhu, du hast die Zahl erraten!!!(<span id="guessCount"></span>)
             <br/>
         </div>
     </form>
+    </div>
     </body>
 </html>
