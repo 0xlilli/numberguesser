@@ -1,0 +1,130 @@
+
+<!doctype html>
+<html dir="ltr" lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>hallo</title>
+    <style>
+    * {
+        font-size:larger
+    }
+    body {
+        background-color: aqua;
+    }
+    .rot {
+      color: red;
+    }
+   
+    h1 {
+      color: blue;
+    }
+    p {
+      
+    }
+
+    #start {
+        display: block;
+        margin: 20px;
+    }
+    #guesser {
+        display: none;
+        margin: 20px;
+    }
+
+    #result span {
+        color:rgb(255, 0, 191);
+        
+    }
+    input.masked {
+        -webkit-text-security: disc; /* oder 'circle' oder 'square' */
+    }
+
+    #win {
+        display: none;
+    }
+    </style>
+    <script text="text/javascript">
+        function checkNumber() {
+            var number = document.getElementById("number").value;
+            if (number < 1 || number > 1000) {
+                alert("Bitte eine Zahl zwischen 1 und 1000 eingeben, du mieser schummler.");
+                window.location.reload();
+                return false;
+            }
+            //log("Die Zahl " + number + " ist gültig!");
+            return true;
+        }
+
+        function log(message) {
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML += message + "<br>";
+        }
+
+
+        function startGame() {
+            var number = document.getElementById("number").value;
+            if (checkNumber()) {
+                document.getElementById("start").style.display = "none";
+                document.getElementById("guesser").style.display = "block";
+            }
+        }
+
+        var guessCount = 0;
+
+        function guessNumber() {
+            guessCount++;
+            var guess = document.getElementById("guess").value;
+            var number = document.getElementById("number").value;
+            if (guess < number) {
+                log("<span>Versuch " + guessCount + " </span>: Zahl ist zu niedrig!");
+            } else if (guess > number) {
+                log("<span>Versuch " + guessCount + " </span>: Die Zahl ist zu hoch!");
+            } else {
+                try {
+                    document.getElementById("guessCount").innerText = guessCount;
+                    document.getElementById('win').style.display = "block";
+                    document.getElementById('guesser').style.display = "none";
+                }catch(e) {
+                    console.error("Fehler beim Anzeigen des Gewinnbildschirms: ", e);
+                }
+            }
+        }
+    </script>
+  </head>
+  <body>
+        <h1>Lilli's erstes Spiel</h1>
+        <p>Bei dem Spiel muss ein Spieler die Zahl des anderen erraten!</p>
+<!--
+
+    * spieler eins gibt eine zahl ein
+    * spieler zwei gibt eine zahl ein
+    * die zahlen werden verglichen
+    * * wenn die zahl zu hoch ist, wird das gesagt
+    * * wenn die zahl zu niedrig ist, wird das gesagt
+    * * wenn die zahl richtig ist, wird gejubelt
+
+-->
+    <form>
+        <div id="start">
+            <label>Gib eine Zahl ein, die zwischen 1 und 1000 liegt:</label>
+            <br/>
+            <input type="password" class="masked" id="number" name="number">
+            <br/>
+            <input type="submit" id="submit_number" onclick="startGame();return false"/>
+        </div>
+        <div id="guesser">
+            <label>Rate die Zahl die Spieler 1 eingegeben hat</label>
+            <br/>
+            <input type="text" id="guess" name="guess">
+            <br/>
+            <input type="submit" id="submit_guess" onclick="guessNumber();return false;"/>
+        </div>
+        <div id="result"></div>
+        <div id="win">
+            Juhu, du hast die Zahl erraten!!! 🎉🤩 (<span id="guessCount"></span> Versuche)
+            <br/>
+            <img src="img/image.png" alt="party" width="800px">
+        </div>
+    </form>
+    </body>
+</html>
